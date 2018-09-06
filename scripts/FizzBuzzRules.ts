@@ -37,56 +37,56 @@ abstract class MasterFizzBuzzRule implements FizzBuzzRule {
 }
 
 export class FizzRule extends MasterFizzBuzzRule {
-    protected id = 'fizz';
-    protected multiple = 3;
+    protected id: string = 'Fizz';
+    protected multiple: number = 3;
 
     protected executeRule(output: Array<string>): Array<string> {
-        output.push("Fizz");
+        output.push(this.id);
         return output;
     }
 }
 
 export class BuzzRule extends MasterFizzBuzzRule {
-    protected id = 'buzz';
-    protected multiple = 5;
+    protected id: string = 'Buzz';
+    protected multiple: number = 5;
 
     protected executeRule(output: Array<string>): Array<string> {
-        output.push("Buzz");
+        output.push(this.id);
         return output;
     }
 }
 
 export class BangRule extends MasterFizzBuzzRule {
-    protected id = 'bang';
-    protected multiple = 7;
+    protected id: string = 'Bang';
+    protected multiple: number = 7;
 
     protected executeRule(output: Array<string>): Array<string> {
-        output.push("Bang");
+        output.push(this.id);
         return output;
     }
 }
 
 export class BongRule extends MasterFizzBuzzRule {
-    protected id = 'bong';
-    protected multiple = 11;
+    protected id: string = 'Bong';
+    protected multiple: number = 11;
 
     protected executeRule(output: Array<string>): Array<string> {
-        return ["Bong"];
+        return [this.id];
     }
 }
 
 export class FezzRule extends MasterFizzBuzzRule {
-    protected id = 'fezz';
-    protected multiple = 13;
+    protected id: string = 'Fezz';
+    protected multiple: number = 13;
 
     protected executeRule(output: Array<string>): Array<string> {
         for(let i = 0; i < output.length; i++) {
             if (this.startsWithB(output[i])) {
-                output.splice(i, 0, "Fezz");
+                output.splice(i, 0, this.id);
                 return output;
             }
         }
-        output.push("Fezz");
+        output.push(this.id);
         return output;
     }
 
@@ -96,8 +96,8 @@ export class FezzRule extends MasterFizzBuzzRule {
 }
 
 export class ReverseRule extends MasterFizzBuzzRule {
-    protected id = 'reverse';
-    protected multiple = 17;
+    protected id: string = 'Reverse';
+    protected multiple: number = 17;
     
     //Do not remove any number if this rule applies
     public applyRuleIfNeeded(n: number, currentOutput: Array<string>): Array<string> {
@@ -109,6 +109,22 @@ export class ReverseRule extends MasterFizzBuzzRule {
 
     protected executeRule(output: Array<string>): Array<string> {
         output.reverse();
+        return output;
+    }
+}
+
+export class CustomRule extends MasterFizzBuzzRule {
+    protected id: string;
+    protected multiple: number;
+    
+    constructor(name: string, n: number) {
+        super();
+        this.id = name;
+        this.multiple = n;
+    }
+
+    protected executeRule(output: Array<string>): Array<string> {
+        output.push(this.id);
         return output;
     }
 }
