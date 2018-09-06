@@ -1,4 +1,4 @@
-import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule, FezzRule, ReverseRule} from './FizzBussRules';
+import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule, FezzRule, ReverseRule} from './FizzBuzzRules';
 
 const Rules: Array<FizzBuzzRule> = [new FizzRule(),
     new BuzzRule(),
