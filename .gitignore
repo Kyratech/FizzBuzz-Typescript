@@ -2,6 +2,9 @@
 scripts/*.js*
 !scripts/require.js
 
+#Generated style files
+style/*.css*
+
 # Logs
 logs
 *.log

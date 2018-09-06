@@ -3,29 +3,32 @@
     <head>
         <title>FizzBuzz demo</title>
         <script data-main="scripts/index.js" src="scripts/require.js"></script>
+        <link rel="stylesheet" type="text/css" href="style/styles.css">
     </head>
     <body>
         <h1>FizzBuzz powered by Typescript!</h1>
-        <form id="fizzbuzz-form" target="dummyframe">
-            <h2>Number of results to display</h2>
-            <input id="no-results" type="number" name="noResults" value="100"><br>
-            <h2>Which rules should be applied?</h2>
-            <input type="checkbox" id="Fizz" name="Fizz" value="Fizz" checked> 3: Fizz<br>
-            <input type="checkbox" id="Buzz" name="Buzz" value="Buzz" checked> 5: Buzz<br>
-            <input type="checkbox" id="Bang" name="Bang" value="Bang" checked> 7: Bang<br>
-            <input type="checkbox" id="Bong" name="Bong" value="Bong" checked> 11: Bong<br>
-            <input type="checkbox" id="Fezz" name="Fezz" value="Fezz" checked> 13: Fezz<br>
-            <input type="checkbox" id="Reverse" name="Reverse" value="Reverse" checked> 17: Reverse<br>
-            <h3>Custom rules</h3>
-            <input type="checkbox" id="Custom" name="Custom" value="Custom">Use custom<br>
-            Applies to multiples of: <input id="custom-number" type="number" name="cusNumber" value="19"><br>
-            Prints word: <input id="custom-text" type="text" name="cusText" value="Bosh"><br>
+        <div class="content">
+            <form class="fb-form" id="fizzbuzz-form" target="dummyframe">
+                <h2>Number of results to display</h2>
+                <input id="no-results" type="number" name="noResults" value="100"><br>
+                <h2>Which rules should be applied?</h2>
+                <input type="checkbox" id="Fizz" name="Fizz" value="Fizz" checked> 3: Fizz<br>
+                <input type="checkbox" id="Buzz" name="Buzz" value="Buzz" checked> 5: Buzz<br>
+                <input type="checkbox" id="Bang" name="Bang" value="Bang" checked> 7: Bang<br>
+                <input type="checkbox" id="Bong" name="Bong" value="Bong" checked> 11: Bong<br>
+                <input type="checkbox" id="Fezz" name="Fezz" value="Fezz" checked> 13: Fezz<br>
+                <input type="checkbox" id="Reverse" name="Reverse" value="Reverse" checked> 17: Reverse<br>
+                <h3>Custom rules</h3>
+                <input type="checkbox" id="Custom" name="Custom" value="Custom"> Use custom<br>
+                Applies to multiples of: <input id="custom-number" type="number" name="cusNumber" value="19"><br>
+                Prints word: <input id="custom-text" type="text" name="cusText" value="Bosh"><br>
 
-            <input type="submit" value="Submit">
-        </form>
+                <input type="submit" value="Submit">
+            </form>
 
-        <div id="fizzbuzz-content"></div>
+            <div id="fizzbuzz-content"></div>
 
-        <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
+            <iframe width="0" height="0" class="invisible" name="dummyframe" id="dummyframe"></iframe>
+        </div>
     </body>
 </html>

@@ -1,0 +1,36 @@
+$fb_blue: #0047b3;
+$fb_blue_accent: #002966;
+$fb_title: #e6f7ff;
+$fb_text: #222222;
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+
+    h1 {
+        color: $fb_title;
+        background-color: $fb_blue;
+    
+        margin: 0 0 10px 0;
+        padding: 10px;
+        border-bottom: 5px solid#002966;
+    }
+
+    .content {
+        color: $fb_text;
+
+        margin: 0px 10px;
+
+        .fb-form {
+            margin: 0 0 10px 0;
+            padding: 0 0 10px 0;
+            border-bottom: 5px solid#002966;
+        }
+
+        .invisible {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+    }
+}
