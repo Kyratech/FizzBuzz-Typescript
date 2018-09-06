@@ -1,9 +1,10 @@
 import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule, FezzRule, ReverseRule, CustomRule} from './FizzBuzzRules';
 
-let AllRules: Array<FizzBuzzRule> = [new FizzRule(),
+let BasicRules: Array<FizzBuzzRule> = [new FizzRule(),
     new BuzzRule(),
-    new BangRule(),
-    new BongRule(),
+    new BangRule()];
+
+let AdvancedRules: Array<FizzBuzzRule> = [new BongRule(),
     new FezzRule(),
     new ReverseRule()];
 
@@ -15,14 +16,20 @@ function RunFizzBuzz(): void {
 function SetRules(): Array<FizzBuzzRule> {
     let currentRules: Array<FizzBuzzRule> = [];
     
-    for(let i = 0; i < AllRules.length; i++) {
-        if(IsChecked(AllRules[i].getId())) {
-            currentRules.push(AllRules[i]);
+    for(let i = 0; i < BasicRules.length; i++) {
+        if(IsChecked(BasicRules[i].getId())) {
+            currentRules.push(BasicRules[i]);
         }
     }
 
     if(IsChecked('Custom')) {
         currentRules.push(GenerateCustomRule());
+    }
+
+    for(let i = 0; i < AdvancedRules.length; i++) {
+        if(IsChecked(AdvancedRules[i].getId())) {
+            currentRules.push(AdvancedRules[i]);
+        }
     }
 
     return currentRules;
