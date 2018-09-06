@@ -46,3 +46,14 @@ export class BuzzRule extends MasterFizzBuzzRule {
         return output;
     }
 }
+
+export class BangRule extends MasterFizzBuzzRule {
+    numberIsRule(n: number): boolean {
+        return n % 7 === 0;
+    }
+
+    executeRule(output: Array<string>): Array<string> {
+        output.push("Bang");
+        return output;
+    }
+}
