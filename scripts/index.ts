@@ -1,10 +1,10 @@
 import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule, FezzRule, ReverseRule, CustomRule} from './FizzBuzzRules';
 
-let BasicRules: Array<FizzBuzzRule> = [new FizzRule(),
+const BasicRules: Array<FizzBuzzRule> = [new FizzRule(),
     new BuzzRule(),
     new BangRule()];
 
-let AdvancedRules: Array<FizzBuzzRule> = [new BongRule(),
+const AdvancedRules: Array<FizzBuzzRule> = [new BongRule(),
     new FezzRule(),
     new ReverseRule()];
 
