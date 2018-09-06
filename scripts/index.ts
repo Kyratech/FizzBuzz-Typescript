@@ -1,6 +1,6 @@
-import {FizzBuzzRule, FizzRule, BuzzRule, BangRule} from './FizzBussRules';
+import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule} from './FizzBussRules';
 
-const Rules: Array<FizzBuzzRule> = [new FizzRule(), new BuzzRule(), new BangRule()];
+const Rules: Array<FizzBuzzRule> = [new FizzRule(), new BuzzRule(), new BangRule(), new BongRule()];
 
 function FizzBuzz(): string {
     return FizzBuzzTo100();

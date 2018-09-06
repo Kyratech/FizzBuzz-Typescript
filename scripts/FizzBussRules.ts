@@ -57,3 +57,13 @@ export class BangRule extends MasterFizzBuzzRule {
         return output;
     }
 }
+
+export class BongRule extends MasterFizzBuzzRule {
+    numberIsRule(n: number): boolean {
+        return n % 11 === 0;
+    }
+
+    executeRule(output: Array<string>): Array<string> {
+        return ["Bong"];
+    }
+}
