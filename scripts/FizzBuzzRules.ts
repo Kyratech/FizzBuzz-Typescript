@@ -1,10 +1,16 @@
 export interface FizzBuzzRule {
+    getId(): string;
     applyRuleIfNeeded(n: number, currentOutput: Array<string>): Array<string>;
 }
 
 abstract class MasterFizzBuzzRule implements FizzBuzzRule {
+    protected abstract id: string;
     protected abstract multiple: number;
     
+    public getId(): string {
+        return this.id;
+    }
+
     public applyRuleIfNeeded(n: number, currentOutput: Array<string>): Array<string> {
         if (this.numberIsRule(n)) {
             return this.executeRule(this.removeNumberFromOutput(n, currentOutput));
@@ -31,6 +37,7 @@ abstract class MasterFizzBuzzRule implements FizzBuzzRule {
 }
 
 export class FizzRule extends MasterFizzBuzzRule {
+    protected id = 'fizz';
     protected multiple = 3;
 
     protected executeRule(output: Array<string>): Array<string> {
@@ -40,6 +47,7 @@ export class FizzRule extends MasterFizzBuzzRule {
 }
 
 export class BuzzRule extends MasterFizzBuzzRule {
+    protected id = 'buzz';
     protected multiple = 5;
 
     protected executeRule(output: Array<string>): Array<string> {
@@ -49,6 +57,7 @@ export class BuzzRule extends MasterFizzBuzzRule {
 }
 
 export class BangRule extends MasterFizzBuzzRule {
+    protected id = 'bang';
     protected multiple = 7;
 
     protected executeRule(output: Array<string>): Array<string> {
@@ -58,6 +67,7 @@ export class BangRule extends MasterFizzBuzzRule {
 }
 
 export class BongRule extends MasterFizzBuzzRule {
+    protected id = 'bong';
     protected multiple = 11;
 
     protected executeRule(output: Array<string>): Array<string> {
@@ -66,6 +76,7 @@ export class BongRule extends MasterFizzBuzzRule {
 }
 
 export class FezzRule extends MasterFizzBuzzRule {
+    protected id = 'fezz';
     protected multiple = 13;
 
     protected executeRule(output: Array<string>): Array<string> {
@@ -85,6 +96,7 @@ export class FezzRule extends MasterFizzBuzzRule {
 }
 
 export class ReverseRule extends MasterFizzBuzzRule {
+    protected id = 'reverse';
     protected multiple = 17;
     
     //Do not remove any number if this rule applies

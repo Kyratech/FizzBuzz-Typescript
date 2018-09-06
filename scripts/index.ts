@@ -1,6 +1,6 @@
 import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule, FezzRule, ReverseRule} from './FizzBuzzRules';
 
-let Rules: Array<FizzBuzzRule> = [new FizzRule(),
+let AllRules: Array<FizzBuzzRule> = [new FizzRule(),
     new BuzzRule(),
     new BangRule(),
     new BongRule(),
@@ -8,62 +8,46 @@ let Rules: Array<FizzBuzzRule> = [new FizzRule(),
     new ReverseRule()];
 
 function RunFizzBuzz(): void {
-    SetRules();
-    (document.getElementById('fizzbuzz-content')).innerHTML = FizzBuzz();
+    let currentRules: Array<FizzBuzzRule> = SetRules();
+    (document.getElementById('fizzbuzz-content')).innerHTML = FizzBuzz(currentRules);
 }
 
-function SetRules(): void {
-    Rules = [];
+function SetRules(): Array<FizzBuzzRule> {
+    let currentRules: Array<FizzBuzzRule> = [];
     
-    if (IsChecked('fizz')) {
-        Rules.push(new FizzRule());
+    for(let i = 0; i < AllRules.length; i++) {
+        if(IsChecked(AllRules[i].getId())) {
+            currentRules.push(AllRules[i]);
+        }
     }
 
-    if (IsChecked('buzz')) {
-        Rules.push(new BuzzRule());
-    }
-
-    if (IsChecked('bang')) {
-        Rules.push(new BangRule());
-    }
-
-    if (IsChecked('bong')) {
-        Rules.push(new BongRule());
-    }
-
-    if (IsChecked('fezz')) {
-        Rules.push(new FezzRule());
-    }
-
-    if (IsChecked('reverse')) {
-        Rules.push(new ReverseRule());
-    }
+    return currentRules;
 }
 
-function FizzBuzz(): string {
+function FizzBuzz(currentRules: Array<FizzBuzzRule>): string {
     let n: number = parseInt((<HTMLInputElement>document.getElementById('no-results')).value);
-    return FizzBuzzToN(n);
+    return FizzBuzzToN(n, currentRules);
 }
 
 function IsChecked(elementId: string): boolean {
     return (<HTMLInputElement>document.getElementById(elementId)).checked;
 }
 
-function FizzBuzzToN(n: number): string {
+function FizzBuzzToN(n: number, currentRules: Array<FizzBuzzRule>): string {
     let str = "";
     
     for(let i = 1; i <= n; i++) {
-        str = str.concat(constructLine(i) + "<br/>");
+        str = str.concat(constructLine(i, currentRules) + "<br/>");
     }
     
     return str;
 }
 
-function constructLine(n: number): string {
+function constructLine(n: number, currentRules: Array<FizzBuzzRule>): string {
     let line: Array<string> = [n.toString()];
 
-    for(let j = 0; j < Rules.length; j++) {
-        line = Rules[j].applyRuleIfNeeded(n, line);
+    for(let j = 0; j < currentRules.length; j++) {
+        line = currentRules[j].applyRuleIfNeeded(n, line);
     }
 
     return line.join("");
