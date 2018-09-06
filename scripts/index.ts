@@ -16,21 +16,13 @@ function RunFizzBuzz(): void {
 function SetRules(): Array<FizzBuzzRule> {
     let currentRules: Array<FizzBuzzRule> = [];
     
-    for(let i = 0; i < BasicRules.length; i++) {
-        if(IsChecked(BasicRules[i].getId())) {
-            currentRules.push(BasicRules[i]);
-        }
-    }
+    currentRules = AddRules(currentRules, BasicRules);
 
     if(IsChecked('Custom')) {
         currentRules.push(GenerateCustomRule());
     }
 
-    for(let i = 0; i < AdvancedRules.length; i++) {
-        if(IsChecked(AdvancedRules[i].getId())) {
-            currentRules.push(AdvancedRules[i]);
-        }
-    }
+    currentRules = AddRules(currentRules, AdvancedRules);
 
     return currentRules;
 }
@@ -42,6 +34,15 @@ function FizzBuzz(currentRules: Array<FizzBuzzRule>): string {
 
 function IsChecked(elementId: string): boolean {
     return (<HTMLInputElement>document.getElementById(elementId)).checked;
+}
+
+function AddRules(currentRules: Array<FizzBuzzRule>, allRules: Array<FizzBuzzRule>): Array<FizzBuzzRule> {
+    for(let i = 0; i < allRules.length; i++) {
+        if(IsChecked(allRules[i].getId())) {
+            currentRules.push(allRules[i]);
+        }
+    }
+    return currentRules;
 }
 
 function GenerateCustomRule(): FizzBuzzRule {
