@@ -88,3 +88,22 @@ export class FezzRule extends MasterFizzBuzzRule {
         return s.substring(0,1) === "B";
     }
 }
+
+export class ReverseRule extends MasterFizzBuzzRule {
+    //Do not remove any number if this rule applies
+    public applyRuleIfNeeded(n: number, currentOutput: Array<string>): Array<string> {
+        if (this.numberIsRule(n)) {
+            return this.executeRule(currentOutput);
+        }
+        return currentOutput;
+    }
+    
+    numberIsRule(n: number): boolean {
+        return n % 17 === 0;
+    }
+
+    executeRule(output: Array<string>): Array<string> {
+        output.reverse();
+        return output;
+    }
+}
