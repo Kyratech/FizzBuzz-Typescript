@@ -1,4 +1,4 @@
-import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule, FezzRule, ReverseRule} from './FizzBuzzRules';
+import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule, FezzRule, ReverseRule, CustomRule} from './FizzBuzzRules';
 
 let AllRules: Array<FizzBuzzRule> = [new FizzRule(),
     new BuzzRule(),
@@ -21,6 +21,10 @@ function SetRules(): Array<FizzBuzzRule> {
         }
     }
 
+    if(IsChecked('Custom')) {
+        currentRules.push(GenerateCustomRule());
+    }
+
     return currentRules;
 }
 
@@ -31,6 +35,12 @@ function FizzBuzz(currentRules: Array<FizzBuzzRule>): string {
 
 function IsChecked(elementId: string): boolean {
     return (<HTMLInputElement>document.getElementById(elementId)).checked;
+}
+
+function GenerateCustomRule(): FizzBuzzRule {
+    let customNumber: number = parseInt((<HTMLInputElement>document.getElementById('custom-number')).value);
+    let customText: string = (<HTMLInputElement>document.getElementById('custom-text')).value;
+    return new CustomRule(customText, customNumber);
 }
 
 function FizzBuzzToN(n: number, currentRules: Array<FizzBuzzRule>): string {
