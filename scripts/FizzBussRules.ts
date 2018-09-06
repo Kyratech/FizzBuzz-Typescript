@@ -67,3 +67,24 @@ export class BongRule extends MasterFizzBuzzRule {
         return ["Bong"];
     }
 }
+
+export class FezzRule extends MasterFizzBuzzRule {
+    numberIsRule(n: number): boolean {
+        return n % 13 === 0;
+    }
+
+    executeRule(output: Array<string>): Array<string> {
+        for(let i = 0; i < output.length; i++) {
+            if (this.startsWithB(output[i])) {
+                output.splice(i, 0, "Fezz");
+                return output;
+            }
+        }
+        output.push("Fezz");
+        return output;
+    }
+
+    private startsWithB(s: string): boolean {
+        return s.substring(0,1) === "B";
+    }
+}

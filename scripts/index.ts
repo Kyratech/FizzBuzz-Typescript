@@ -1,15 +1,15 @@
-import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule} from './FizzBussRules';
+import {FizzBuzzRule, FizzRule, BuzzRule, BangRule, BongRule, FezzRule} from './FizzBussRules';
 
-const Rules: Array<FizzBuzzRule> = [new FizzRule(), new BuzzRule(), new BangRule(), new BongRule()];
+const Rules: Array<FizzBuzzRule> = [new FizzRule(), new BuzzRule(), new BangRule(), new BongRule(), new FezzRule()];
 
 function FizzBuzz(): string {
-    return FizzBuzzTo100();
+    return FizzBuzzTo200();
 }
 
-function FizzBuzzTo100(): string {
+function FizzBuzzTo200(): string {
     let str = "";
     
-    for(let i = 1; i <= 100; i++) {
+    for(let i = 1; i <= 200; i++) {
         str = str.concat(constructLine(i) + "<br/>");
     }
     
