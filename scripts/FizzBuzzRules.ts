@@ -3,6 +3,8 @@ export interface FizzBuzzRule {
 }
 
 abstract class MasterFizzBuzzRule implements FizzBuzzRule {
+    protected abstract multiple: number;
+    
     public applyRuleIfNeeded(n: number, currentOutput: Array<string>): Array<string> {
         if (this.numberIsRule(n)) {
             return this.executeRule(this.removeNumberFromOutput(n, currentOutput));
@@ -10,8 +12,11 @@ abstract class MasterFizzBuzzRule implements FizzBuzzRule {
         return currentOutput;
     }
 
-    abstract numberIsRule(n: number): boolean;
-    abstract executeRule(output: Array<string>): Array<string>;
+    protected numberIsRule(n: number): boolean {
+        return n % this.multiple === 0;
+    }
+
+    protected abstract executeRule(output: Array<string>): Array<string>;
 
     //If no previous rules are applied, the output should be a single number
     private removeNumberFromOutput(n: number, currentOutput: Array<string>): Array<string> {
@@ -26,54 +31,44 @@ abstract class MasterFizzBuzzRule implements FizzBuzzRule {
 }
 
 export class FizzRule extends MasterFizzBuzzRule {
-    numberIsRule(n: number): boolean {
-        return n % 3 === 0;
-    }
+    protected multiple = 3;
 
-    executeRule(output: Array<string>): Array<string> {
+    protected executeRule(output: Array<string>): Array<string> {
         output.push("Fizz");
         return output;
     }
 }
 
 export class BuzzRule extends MasterFizzBuzzRule {
-    numberIsRule(n: number): boolean {
-        return n % 5 === 0;
-    }
+    protected multiple = 5;
 
-    executeRule(output: Array<string>): Array<string> {
+    protected executeRule(output: Array<string>): Array<string> {
         output.push("Buzz");
         return output;
     }
 }
 
 export class BangRule extends MasterFizzBuzzRule {
-    numberIsRule(n: number): boolean {
-        return n % 7 === 0;
-    }
+    protected multiple = 7;
 
-    executeRule(output: Array<string>): Array<string> {
+    protected executeRule(output: Array<string>): Array<string> {
         output.push("Bang");
         return output;
     }
 }
 
 export class BongRule extends MasterFizzBuzzRule {
-    numberIsRule(n: number): boolean {
-        return n % 11 === 0;
-    }
+    protected multiple = 11;
 
-    executeRule(output: Array<string>): Array<string> {
+    protected executeRule(output: Array<string>): Array<string> {
         return ["Bong"];
     }
 }
 
 export class FezzRule extends MasterFizzBuzzRule {
-    numberIsRule(n: number): boolean {
-        return n % 13 === 0;
-    }
+    protected multiple = 13;
 
-    executeRule(output: Array<string>): Array<string> {
+    protected executeRule(output: Array<string>): Array<string> {
         for(let i = 0; i < output.length; i++) {
             if (this.startsWithB(output[i])) {
                 output.splice(i, 0, "Fezz");
@@ -90,6 +85,8 @@ export class FezzRule extends MasterFizzBuzzRule {
 }
 
 export class ReverseRule extends MasterFizzBuzzRule {
+    protected multiple = 17;
+    
     //Do not remove any number if this rule applies
     public applyRuleIfNeeded(n: number, currentOutput: Array<string>): Array<string> {
         if (this.numberIsRule(n)) {
@@ -97,12 +94,8 @@ export class ReverseRule extends MasterFizzBuzzRule {
         }
         return currentOutput;
     }
-    
-    numberIsRule(n: number): boolean {
-        return n % 17 === 0;
-    }
 
-    executeRule(output: Array<string>): Array<string> {
+    protected executeRule(output: Array<string>): Array<string> {
         output.reverse();
         return output;
     }
