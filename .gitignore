@@ -1,3 +1,7 @@
+# Generated javascript files
+scripts/*.js*
+!scripts/require.js
+
 # Logs
 logs
 *.log
